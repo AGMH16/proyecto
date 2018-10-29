@@ -234,15 +234,24 @@ def listado_de_libros()
      # puts 'NO HAY LIBROS EN EL SISTEMA '
     #end
 end
+def vacia?(cola)
+    return cola[:fondo].nil? && cola[:fondo] == nil
+end 
 def listadoautores(cola)
     #Debe mostrar la capacidad de libros que tiene dicho autor
     #El orden de la cola de autores debe ser respetada
     #En caso de no existir autores en el sistema debe aparecer una alerta informando
     limpiar
-    if    cola[:esta_vacia]==true
-        puts "no hay datos"
-    else
+    if cola == vacia?(cola)
+        def vacia?(cola)
+            return cola[:fondo].nil? && cola[:fondo] == nil
+        end 
+    end 
+    if vacia?(cola)==true
+        puts "NO HAY AUTORES TODAVIA"
+    elsif 
     elemento = cola[:fondo]
+<<<<<<< HEAD
     while elemento != nil
         puts elemento[:nombre]
         puts elemento
@@ -250,6 +259,19 @@ def listadoautores(cola)
     end
     gets
   end 
+=======
+    puts elemento[:nombre]
+    #puts elemento[:sigugiente]
+    end 
+  #begin
+   # nuevo_elemento = elemento[:siguiente]
+    #nuevo_elemento [:nombre]
+    #elemento = nuevo_elemento
+    #puts elemento[:nombre]
+  #end while elemento[:siguiente] != nil
+  #gets
+#end
+>>>>>>> ac9460325858b439463ad6fe3d96868f7f8a21e2
 end
 
 def buscar_libro()
