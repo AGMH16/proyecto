@@ -243,17 +243,15 @@ def listadoautores(cola)
         puts "no hay datos"
     else
     elemento = cola[:fondo]
-    puts elemento[:nombre]
-    puts elemento
-  begin
-    nuevo_elemento = elemento[:siguiente]
-    nuevo_elemento [:nombre]
-    elemento = nuevo_elemento
-    puts elemento[:nombre]
-  end while elemento[:siguiente] != nil
-  gets
+    while elemento != nil
+        puts elemento[:nombre]
+        puts elemento
+        elemento= elemento[:siguiente]
+    end
+    gets
+  end 
 end
-end
+
 def buscar_libro()
    #Se ingresara el ISBN y este debe mostrar cuantas existencias tiene este libro
    #Debe mostrar los siguientes datos: ISBN, nombre ,autor , precio y existencias
@@ -425,20 +423,21 @@ if opcion=='1'
         incluir_autores_por_la_pila(nombre_autor,pila1,cola)
         puts "cola: #{cola[:fondo]}"
         puts "pila1: #{pila1[:topeL]} "
-       elsif nombre_del_autor_en_la_pila1!=nombre_autor && nombre_del_autor_en_la_pila3!=nombre_autor && nombre_del_autor_en_la_pila4!=nombre_autor && nombre_del_autor_en_la_pila5!=nombre_autor 
+       elsif @numero_de_autores==1  #nombre_del_autor_en_la_pila1!=nombre_autor && nombre_del_autor_en_la_pila3!=nombre_autor && nombre_del_autor_en_la_pila4!=nombre_autor && nombre_del_autor_en_la_pila5!=nombre_autor 
         #@numero_de_autores=2
         registro_de_nuevos_libros(pila2,cola,the_isbn,nombre_libro,nombre_autor,precio_libro,existencias_libro)
         incluir_autores_por_la_pila(nombre_autor,pila2,cola)
-        nombre_del_autor_en_la_pila2= pila2[:topeL][:nombre_del_autor]
+        puts nombre_del_autor_en_la_pila2=pila2[:topeL][:nombre_del_autor]
         puts "cola: #{cola[:fondo]}"
         puts "pila2: #{pila2[:topeL]} "
+        puts "entro aqui 1"
        elsif nombre_del_autor_en_la_pila2==nombre_autor
         registro_de_nuevos_libros(pila2,cola,the_isbn,nombre_libro,nombre_autor,precio_libro,existencias_libro)
         incluir_autores_por_la_pila(nombre_autor,pila2,cola)
         puts "cola: #{cola[:fondo]}"
         puts "pila2: #{pila2[:topeL]} "
-      elsif nombre_del_autor_en_la_pila1!=nombre_autor && nombre_del_autor_en_la_pila2!=nombre_autor && nombre_del_autor_en_la_pila4!=nombre_autor && nombre_del_autor_en_la_pila5!=nombre_autor 
-       # @numero_de_autores=3
+        puts "entro aqui 2"
+      elsif @numero_de_autores==2 #nombre_del_autor_en_la_pila1!=nombre_autor && nombre_del_autor_en_la_pila2!=nombre_autor && nombre_del_autor_en_la_pila4!=nombre_autor && nombre_del_autor_en_la_pila5!=nombre_autor 
         registro_de_nuevos_libros(pila3,cola,the_isbn,nombre_libro,nombre_autor,precio_libro,existencias_libro)
         incluir_autores_por_la_pila(nombre_autor,pila3,cola)
         nombre_del_autor_en_la_pila3= pila3[:topeL][:nombre_del_autor]
@@ -449,7 +448,7 @@ if opcion=='1'
         incluir_autores_por_la_pila(nombre_autor,pila3,cola)
         puts "cola: #{cola[:fondo]}"
         puts "pila3: #{pila3[:topeL]} "
-    elsif nombre_del_autor_en_la_pila1!=nombre_autor && nombre_del_autor_en_la_pila3!=nombre_autor && nombre_del_autor_en_la_pila2!=nombre_autor && nombre_del_autor_en_la_pila5!=nombre_autor 
+       elsif @numero_de_autores==3 #nombre_del_autor_en_la_pila1!=nombre_autor && nombre_del_autor_en_la_pila3!=nombre_autor && nombre_del_autor_en_la_pila2!=nombre_autor && nombre_del_autor_en_la_pila5!=nombre_autor 
        # @numero_de_autores=4
         registro_de_nuevos_libros(pila4,cola,the_isbn,nombre_libro,nombre_autor,precio_libro,existencias_libro)
         nombre_del_autor_en_la_pila4= pila4[:topeL][:nombre_del_autor]
@@ -461,10 +460,15 @@ if opcion=='1'
         incluir_autores_por_la_pila(nombre_autor,pila4,cola)
         puts "cola: #{cola[:fondo]}"
         puts "pila4: #{pila4[:topeL]} "
-      elsif nombre_del_autor_en_la_pila1!=nombre_autor && nombre_del_autor_en_la_pila3!=nombre_autor && nombre_del_autor_en_la_pila4!=nombre_autor && nombre_del_autor_en_la_pila2!=nombre_autor 
+      elsif  @numero_de_autores==4#nombre_del_autor_en_la_pila1!=nombre_autor && nombre_del_autor_en_la_pila3!=nombre_autor && nombre_del_autor_en_la_pila4!=nombre_autor && nombre_del_autor_en_la_pila2!=nombre_autor 
         #@numero_de_autores=5
         registro_de_nuevos_libros(pila5,cola,the_isbn,nombre_libro,nombre_autor,precio_libro,existencias_libro)
         nombre_del_autor_en_la_pila5= pila5[:topeL][:nombre_del_autor]
+        puts "cola: #{cola[:fondo]}"
+        puts "pila5: #{pila5[:topeL]} "
+       elsif nombre_del_autor_en_la_pila5==nombre_autor
+        registro_de_nuevos_libros(pila5,cola,the_isbn,nombre_libro,nombre_autor,precio_libro,existencias_libro)
+        incluir_autores_por_la_pila(nombre_autor,pila5,cola)
         puts "cola: #{cola[:fondo]}"
         puts "pila5: #{pila5[:topeL]} "
         end
