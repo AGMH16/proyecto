@@ -212,69 +212,77 @@ def listado_de_libros(unapila)
     #Se debe mostrar el listado de libros con los siguientes datos: ISBN , nombre, precio , autor y existencias
     #en lugar de repetir el libro mostrar las existencias, debe mantenr el orden en las diferentes pilas de libros
     #en caso de que no existan libros en el sistema debe aparecer una alertas
-    limpiar
-    if unapila[:vaciaL]==true
+    #limpiar
+    if unapila[:vaciaL]==true # || unapila[:isbn]==nil
         puts "Aun no hay libros ingresados "
     else
     elemento = unapila[:topeL]
-    puts "ISBN: #{elemento[:the_isbn]}"
+    puts "ISBN: #{elemento[:isbn]}"
     puts "NOMBRE DEL LIBRO: #{elemento[:nombre_del_libro]}"
     puts "PRECIO: #{elemento[:precio_del_libro]}"
     puts "NOMBRE DEL AUTOR: #{elemento[:nombre_del_autor]}"
     puts "EXISTENCIAS: #{elemento[:existencias_del_libro]}"
+    if unapila[:isbn]==nil
+        puts "se han mostrado todos los libros"
+    else
     begin
-      nuevo_elemento = elemento[:siguiente]
-      if unapila[:tope]==nil && unapila[:siguiete]==nil
+      nuevo_elemento = elemento[:siguienteL]
+      if unapila[:topeL]==nil && unapila[:siguieteL]==nil
         puts "NO HAY DATOS PARA MOSTRAR"
-    end
-      nuevo_elemento [:valor]
+     end
+      nuevo_elemento [:isbn]
       elemento = nuevo_elemento
-    puts "ISBN: #{elemento[:the_isbn]}"
+    puts "ISBN: #{elemento[:isbn]}"
     puts "NOMBRE DEL LIBRO: #{elemento[:nombre_del_libro]}"
     puts "PRECIO: #{elemento[:precio_del_libro]}"
     puts "NOMBRE DEL AUTOR: #{elemento[:nombre_del_autor]}"
     puts "EXISTENCIAS: #{elemento[:existencias_del_libro]}"
-    end while elemento[:siguiente] != nil
+    end while elemento[:siguienteL] != nil
     gets
+end
 end
 end
 def vacia?(cola)
     return cola[:fondo].nil? && cola[:fondo] == nil
 end 
-def listadoautores(cola)
+def listadoautores(pila)
     #Debe mostrar la capacidad de libros que tiene dicho autor
     #El orden de la cola de autores debe ser respetada
     #En caso de no existir autores en el sistema debe aparecer una alerta informando
-    limpiar
-    if cola == vacia?(cola)
-        def vacia?(cola)
-            return cola[:fondo].nil? && cola[:fondo] == nil
-        end 
-    end 
-    if vacia?(cola)==true
-        puts "NO HAY AUTORES TODAVIA"
-    elsif 
-    elemento = cola[:fondo]
-    while elemento != nil
-        puts elemento[:nombre]
-       # puts elemento
-        elemento= elemento[:siguiente]
+    if pila[:vaciaL]==true # || unapila[:isbn]==nil
+        puts "Aun no hay libros ingresados "
+    else
+    elemento = pila[:topeL]
+    puts "NOMBRE DEL AUTOR: #{elemento[:nombre_del_autor]}"
+    puts "NOMBRE DEL LIBRO: #{elemento[:nombre_del_libro]}"
+    puts "EXISTECIAS DEL LIBRO: #{elemento[:existencias_del_libro]}"
+    if pila[:isbn]==nil
+        puts "se han mostrado todos los libros"
+    else
+    begin
+      nuevo_elemento = elemento[:siguienteL]
+      if pila[:isbn]==nil 
+        puts "NO HAY DATOS PARA MOSTRAR"
     end
+      nuevo_elemento [:isbn]
+      elemento = nuevo_elemento
+    puts "NOMBRE DEL AUTOR: #{elemento[:nombre_del_autor]}"
+    puts "NOMBRE DEL LIBRO: #{elemento[:nombre_del_libro]}"
+    puts "EXISTECIAS DEL LIBRO: #{elemento[:existencias_del_libro]}"
+      #puts elemento[:valor]
+    end while elemento[:siguienteL] != nil
     gets
-  end 
+end
+end
 end
 
-def buscar_libro()
+def buscar_libro(unapila)
    #Se ingresara el ISBN y este debe mostrar cuantas existencias tiene este libro
    #Debe mostrar los siguientes datos: ISBN, nombre ,autor , precio y existencias
    #Si el usuario ingresa un ISBN invalido debe informarle al vendedor
    puts 'INGRESE EL ISBN QUE DESEA BUSCAR '
-  libroi= gets.to_i
-  if libroi ==
-    puts
-  else
-    puts 'EL ISBN ES INVALIDO'
-  end
+  libroi= gets.chomp
+ 
 end
 def buscar_autor(cola)
     #se buscara por medio del autor, y debe mostrar el nombre de todos los libros que estan en la pila
@@ -491,9 +499,17 @@ if opcion=='1'
     elsif opcion=='3'
         #listado de libros
         listado_de_libros(pila1)
+        listado_de_libros(pila2)
+        listado_de_libros(pila3)
+        listado_de_libros(pila4)
+        listado_de_libros(pila5)
     elsif opcion=='4'
         #listado de autores
-        listadoautores(cola)
+        listadoautores(pila1)
+        listadoautores(pila2)
+        listadoautores(pila3)
+        listadoautores(pila4)
+        listadoautores(pila5)
     elsif opcion=='5'
         #buscar por nombre del libro
     elsif opcion == '6'
