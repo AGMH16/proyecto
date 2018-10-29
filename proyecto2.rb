@@ -221,54 +221,65 @@ else
 end
 end
 end
-def listado_de_libros()
-    #Esta opcion debe mostrar todos los libros en un sistema independiente del autor
+#def vacia?(pila1)
+ #   return pila1[:topeL][:nombre_del_libro].nil? && pila1[:topeL][:nombre_del_libro] == nil
+#end 
+#def vacia?(pila2)
+ #   return pila2[:fondo].nil? && pila2[:fondo] == nil
+#end 
+#def vacia?(pila3)
+ #   return pila3[:fondo].nil? && pila3[:fondo] == nil
+#end 
+#def vacia?(pila4)
+ #   return pila4[:fondo].nil? && pila4[:fondo] == nil
+#end 
+#def vacia?(pila5)
+ #   return pila5[:fondo].nil? && pila5[:fondo] == nil
+#end 
+def listado_de_libros2(pila2)
+     puts pila2[:topeL][:nombre_del_libro]
+ end 
+ def listado_de_libros3(pila3)
+    puts pila3[:topeL][:nombre_del_libro]
+end 
+def listado_de_libros4(pila4)
+    puts pila4[:topeL][:nombre_del_libro]
+end 
+def listado_de_libros5(pila5)
+    puts pila5[:topeL][:nombre_del_libro]
+end 
+def listado_de_libros(pila1)
+   #Esta opcion debe mostrar todos los libros en un sistema independiente del autor
     #No se debe repetir ISBN, se de incrementar en un contador y mostrar el total de datos
     #Se debe mostrar el listado de libros con los siguientes datos: ISBN , nombre, precio , autor y existencias
     #en lugar de repetir el libro mostrar las existencias, debe mantenr el orden en las diferentes pilas de libros
     #en caso de que no existan libros en el sistema debe aparecer una alertas
+   limpiar
+    puts pila1[:topeL][:nombre_del_libro]
+
+end 
     
-    #if variable=> 0
-     # puts ''
-    #else
-     # puts 'NO HAY LIBROS EN EL SISTEMA '
-    #end
-end
 def vacia?(cola)
     return cola[:fondo].nil? && cola[:fondo] == nil
+end 
+def listadoautores2(cola)
+    if vacia?(cola)==true
+        puts "NO HAY AUTORES TODAVIA"
+    end 
 end 
 def listadoautores(cola)
     #Debe mostrar la capacidad de libros que tiene dicho autor
     #El orden de la cola de autores debe ser respetada
     #En caso de no existir autores en el sistema debe aparecer una alerta informando
     limpiar
-    if cola == vacia?(cola)
-        def vacia?(cola)
-            return cola[:fondo].nil? && cola[:fondo] == nil
-        end 
-    end 
-    if vacia?(cola)==true
-        puts "NO HAY AUTORES TODAVIA"
-    elsif 
+    
     elemento = cola[:fondo]
-    while elemento != nil
+
         puts elemento[:nombre]
-        puts elemento
         elemento= elemento[:siguiente]
-    end
-    gets
-  end 
-    puts elemento[:nombre]
-    #puts elemento[:sigugiente]
-  #begin
-   # nuevo_elemento = elemento[:siguiente]
-    #nuevo_elemento [:nombre]
-    #elemento = nuevo_elemento
-    #puts elemento[:nombre]
-  #end while elemento[:siguiente] != nil
-  #gets
-#end
-end
+    
+ 
+end 
 
 def buscar_libro()
    #Se ingresara el ISBN y este debe mostrar cuantas existencias tiene este libro
@@ -496,6 +507,11 @@ if opcion=='1'
         registrosautores(cola)
     elsif opcion=='3'
         #listado de libros
+        listado_de_libros(pila1)
+        listado_de_libros2(pila2) 
+        listado_de_libros3(pila3)
+        listado_de_libros4(pila4)
+        listado_de_libros5(pila5)       
     elsif opcion=='4'
         #listado de autores
         listadoautores(cola)
