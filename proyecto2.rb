@@ -2,7 +2,7 @@ def limpiar
     system('clear')
 end
 @numero_de_autores=0
-def registro_de_nuevos_libros(piladelibros,cola)
+def registro_de_nuevos_libros(piladelibros,cola,the_isbn,nombre_libro,nombre_autor,precio_libro,existencias_libro)
     #Esta funcion es para ingresar diferente ejemplares en la libreria, son ordenados por autor y cada libro
     #por lo menos tiene los siguientes datos: ISBN, nombre,autor y precio.
     #Se debe tomar en cuenta el numero de existencia basados en el ISBN, no en el nombre del autor o del libro
@@ -16,19 +16,7 @@ def registro_de_nuevos_libros(piladelibros,cola)
     #    llenaL: false,
     #    tamañoL:0
     #}
-    puts 'Bienvenido a la libreria.'
-    puts "En esta opcion usted podra ingresar un libro , con ciertos datos especificos"
-    puts "Ingrese el ISBN del libro"
-    the_isbn = gets.chomp.upcase
-    puts "Ingrese el nombre del libro"
-    nombre_libro = gets.chomp.upcase
-    puts "Ingrese el nombre del autor"
-    nombre_autor=gets.chomp.upcase
-    puts "Ingrese el precio del libro"
-    puts "En esta opcion no necesita ingresar la Q. solo debe ingresar el valor numerico"
-    precio_libro=gets.chomp
-    puts "Ingrese el total de libros que esta ingresando"
-    existencias_libro=gets.chop.to_i
+    
     libros={
         isbn: the_isbn,
         nombre_del_libro: nombre_libro,
@@ -98,7 +86,6 @@ def registro_de_nuevos_libros(piladelibros,cola)
           #   colautores[:topeC]=autores
           #   colautores[:finalC]=autores
          puts "pila #{piladelibros[:topeL]}"
-         incluir_autores_por_la_pila(nombre_autor,piladelibros,cola)
         end
     end
 end
@@ -127,6 +114,7 @@ def incluir_autores_por_la_pila(nombre_autor,piladelibros,cola)
   if cola[:tamaño] < cola[:max] 
    if  cola[:fondo][:nombre]==autores[:nombre]
       puts 'ESE AUTOR YA FUE INGRESADO ANTES'
+      #puts "cola: #{cola[:fondo]=piladelibros[:topeL]}"
   elsif cola[:fondo][:nombre]!=autores[:nombre] && cola[:fondo][:siguiente]==nil
     autores[:siguiente] = autores
     autores[:siguiente] = cola[:fondo]
@@ -142,6 +130,7 @@ def incluir_autores_por_la_pila(nombre_autor,piladelibros,cola)
       nuevo_elemento = elemento[:siguiente]
       if nuevo_elemento[:nombre]==autores[:nombre]
           puts 'ESE AUTOR YA FUE INGRESADO ANTES'
+         # puts "cola: #{nuevo_elemento[:nombre]=piladelibros[:topeL]}"
       boo=false
       else
           boo= true
@@ -181,6 +170,7 @@ autores = {
 }
 #hay que guardar por posicion
 #Se crea una condicion para verificar si esta vacia, tope, fondo y tamaño
+cola[:tamaño]=@numero_de_autores
 if cola[:esta_vacia] == true
   cola[:tope] = autores
   cola[:fondo] = autores
@@ -383,6 +373,11 @@ cola = {
   esta_llena: false
 }
 totalautores=0
+nombre_del_autor_en_la_pila1=nil
+nombre_del_autor_en_la_pila2=nil
+nombre_del_autor_en_la_pila3=nil
+nombre_del_autor_en_la_pila4=nil
+nombre_del_autor_en_la_pila5=nil
 begin
 #menu principal , y bienvenida
 puts "Bienvenido al programa de la libreria"
@@ -405,18 +400,75 @@ if opcion=='1'
     puts "7. Regresar"
     opcion=gets.chomp
     if opcion=='1'
-       if @numero_de_autores==0 ||  @numero_de_autores==1
-       # na=pila1[:topeL][:nombre_del_autor]
-            registro_de_nuevos_libros(pila1,cola)
-       #elsif @numero_de_autores==2
-       #     registro_de_nuevos_libros(pila2,cola)
-       # elsif @numero_de_autores==3
-       #     registro_de_nuevos_libros(pila3,cola)
-       # elsif @numero_de_autores==4
-        #    registro_de_nuevos_libros(pila4,cola)
-        #elsif @numero_de_autores==5
-        #    registro_de_nuevos_libros(pila5,cola)
-       end
+    puts 'Bienvenido a la libreria.'
+    puts "En esta opcion usted podra ingresar un libro , con ciertos datos especificos"
+    puts "Ingrese el ISBN del libro"
+    the_isbn = gets.chomp.upcase
+    puts "Ingrese el nombre del libro"
+    nombre_libro = gets.chomp.upcase
+    puts "Ingrese el nombre del autor"
+    nombre_autor=gets.chomp.upcase
+    puts "Ingrese el precio del libro"
+    puts "En esta opcion no necesita ingresar la Q. solo debe ingresar el valor numerico"
+    precio_libro=gets.chomp
+    puts "Ingrese el total de libros que esta ingresando"
+    existencias_libro=gets.chop.to_i
+       if @numero_de_autores==0 
+           registro_de_nuevos_libros(pila1,cola,the_isbn,nombre_libro,nombre_autor,precio_libro,existencias_libro)
+           nombre_del_autor_en_la_pila1= pila1[:topeL][:nombre_del_autor]
+           incluir_autores_por_la_pila(nombre_autor,pila1,cola)
+           puts "cola: #{cola[:fondo]}"
+           puts "pila1: #{pila1[:topeL]} "
+           #@numero_de_autores+=1
+       elsif nombre_del_autor_en_la_pila1==nombre_autor
+        registro_de_nuevos_libros(pila1,cola,the_isbn,nombre_libro,nombre_autor,precio_libro,existencias_libro)
+        incluir_autores_por_la_pila(nombre_autor,pila1,cola)
+        puts "cola: #{cola[:fondo]}"
+        puts "pila1: #{pila1[:topeL]} "
+       elsif nombre_del_autor_en_la_pila1!=nombre_autor && nombre_del_autor_en_la_pila3!=nombre_autor && nombre_del_autor_en_la_pila4!=nombre_autor && nombre_del_autor_en_la_pila5!=nombre_autor 
+        #@numero_de_autores=2
+        registro_de_nuevos_libros(pila2,cola,the_isbn,nombre_libro,nombre_autor,precio_libro,existencias_libro)
+        incluir_autores_por_la_pila(nombre_autor,pila2,cola)
+        nombre_del_autor_en_la_pila2= pila2[:topeL][:nombre_del_autor]
+        puts "cola: #{cola[:fondo]}"
+        puts "pila2: #{pila2[:topeL]} "
+       elsif nombre_del_autor_en_la_pila2==nombre_autor
+        registro_de_nuevos_libros(pila2,cola,the_isbn,nombre_libro,nombre_autor,precio_libro,existencias_libro)
+        incluir_autores_por_la_pila(nombre_autor,pila2,cola)
+        puts "cola: #{cola[:fondo]}"
+        puts "pila2: #{pila2[:topeL]} "
+      elsif nombre_del_autor_en_la_pila1!=nombre_autor && nombre_del_autor_en_la_pila2!=nombre_autor && nombre_del_autor_en_la_pila4!=nombre_autor && nombre_del_autor_en_la_pila5!=nombre_autor 
+       # @numero_de_autores=3
+        registro_de_nuevos_libros(pila3,cola,the_isbn,nombre_libro,nombre_autor,precio_libro,existencias_libro)
+        incluir_autores_por_la_pila(nombre_autor,pila3,cola)
+        nombre_del_autor_en_la_pila3= pila3[:topeL][:nombre_del_autor]
+        puts "cola: #{cola[:fondo]}"
+        puts "pila3: #{pila3[:topeL]} "
+       elsif nombre_del_autor_en_la_pila3==nombre_autor
+        registro_de_nuevos_libros(pila3,cola,the_isbn,nombre_libro,nombre_autor,precio_libro,existencias_libro)
+        incluir_autores_por_la_pila(nombre_autor,pila3,cola)
+        puts "cola: #{cola[:fondo]}"
+        puts "pila3: #{pila3[:topeL]} "
+    elsif nombre_del_autor_en_la_pila1!=nombre_autor && nombre_del_autor_en_la_pila3!=nombre_autor && nombre_del_autor_en_la_pila2!=nombre_autor && nombre_del_autor_en_la_pila5!=nombre_autor 
+       # @numero_de_autores=4
+        registro_de_nuevos_libros(pila4,cola,the_isbn,nombre_libro,nombre_autor,precio_libro,existencias_libro)
+        nombre_del_autor_en_la_pila4= pila4[:topeL][:nombre_del_autor]
+        incluir_autores_por_la_pila(nombre_autor,pila4,cola)
+        puts "cola: #{cola[:fondo]}"
+        puts "pila4: #{pila4[:topeL]} "
+       elsif nombre_del_autor_en_la_pila4==nombre_autor
+        registro_de_nuevos_libros(pila4,cola,the_isbn,nombre_libro,nombre_autor,precio_libro,existencias_libro)
+        incluir_autores_por_la_pila(nombre_autor,pila4,cola)
+        puts "cola: #{cola[:fondo]}"
+        puts "pila4: #{pila4[:topeL]} "
+      elsif nombre_del_autor_en_la_pila1!=nombre_autor && nombre_del_autor_en_la_pila3!=nombre_autor && nombre_del_autor_en_la_pila4!=nombre_autor && nombre_del_autor_en_la_pila2!=nombre_autor 
+        #@numero_de_autores=5
+        registro_de_nuevos_libros(pila5,cola,the_isbn,nombre_libro,nombre_autor,precio_libro,existencias_libro)
+        nombre_del_autor_en_la_pila5= pila5[:topeL][:nombre_del_autor]
+        puts "cola: #{cola[:fondo]}"
+        puts "pila5: #{pila5[:topeL]} "
+        end
+       
     elsif opcion=='2'
         # registro de autores
         registrosautores(cola)
