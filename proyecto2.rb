@@ -114,7 +114,7 @@ def incluir_autores_por_la_pila(nombre_autor,piladelibros,cola)
   if cola[:tamaño] < cola[:max] 
    if  cola[:fondo][:nombre]==autores[:nombre]
       puts 'ESE AUTOR YA FUE INGRESADO ANTES'
-      #puts "cola: #{cola[:fondo]=piladelibros[:topeL]}"
+     # puts "cola: #{cola[:fondo]=piladelibros[:topeL]}"
   elsif cola[:fondo][:nombre]!=autores[:nombre] && cola[:fondo][:siguiente]==nil
     autores[:siguiente] = autores
     autores[:siguiente] = cola[:fondo]
@@ -251,7 +251,6 @@ def listadoautores(cola)
         puts "NO HAY AUTORES TODAVIA"
     elsif 
     elemento = cola[:fondo]
-<<<<<<< HEAD
     while elemento != nil
         puts elemento[:nombre]
         puts elemento
@@ -259,10 +258,8 @@ def listadoautores(cola)
     end
     gets
   end 
-=======
     puts elemento[:nombre]
     #puts elemento[:sigugiente]
-    end 
   #begin
    # nuevo_elemento = elemento[:siguiente]
     #nuevo_elemento [:nombre]
@@ -271,7 +268,6 @@ def listadoautores(cola)
   #end while elemento[:siguiente] != nil
   #gets
 #end
->>>>>>> ac9460325858b439463ad6fe3d96868f7f8a21e2
 end
 
 def buscar_libro()
