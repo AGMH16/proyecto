@@ -593,7 +593,7 @@ elsif opcion=='2'
         #listado de libros
     elsif opcion=='4'
     end
+   end
+end
 #elsif opcion=='3'
  #   puts "Gracias por utilizar el programa"
-end
-end while opcion!='3'
