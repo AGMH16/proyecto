@@ -94,7 +94,7 @@ def incluir_autores_por_la_pila(nombre_autor,piladelibros,cola)
     autores[:siguiente] = cola[:fondo]
     cola[:fondo] = autores
     cola[:tamaño] = cola[:tamaño] +1
-    @numero_de_autores=@numero_de_autores+1
+    @numero_de_autores = @numero_de_autores + 1
   else
   boo = false
   if boo==false
@@ -576,24 +576,45 @@ elsif opcion=='2'
     puts "Ingrese numero de ISBN del libro : "
         ISBNV = gets.chomp
         v=1
-    if opcion = 1
-        if ISBNV == 
-        if v < 3
-            
-          v = v + 1
+        if opcion=='1'
+            pilav={
+                topev:nil,
+                maxL:20,
+                vaciav: true,
+                llenav: false,
+                tamañov:0
+            }
+            def listado_de_ventas(pilav)
+                
+                if pilav[:vaciav]==true 
+                    puts "No hay ventas dsiponibles"
+                
+                else
+                elementov = pilav[:topev]
+                puts "Nombre del libro:" 
+                puts "Cantidad de libros: "
+                
+                end
+            end    
+            puts "Ingrese numero de ISBN: "
+            isbnv=gets.chomp
+            if isbnv == 0 
+            if v < 3
+                
+              v = v + 1
+            end
+            if v == 3
+    
+            end
+              
+        elsif opcion=='2'
+            # registro de autores
+        elsif opcion=='3'
+            #listado de libros
+        elsif opcion=='4'
         end
-        if v == 3
-
-        end   
-    elsif opcion=='2'
-        # registro de autores
     elsif opcion=='3'
-        #listado de libros
-    elsif opcion=='4'
+    puts "Gracias por utilizar el programa"
     end
-   end
+    end while opcion!='3'
 end
-if opcion=='3'
-puts "Gracias por utilizar el programa"
-end 
-end 
