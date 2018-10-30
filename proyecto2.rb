@@ -573,8 +573,9 @@ elsif opcion=='2'
     puts "3. Listado de ventas"
     puts "4. Regresar"
     opcion=gets.chomp
-    puts "Ingrese numero de ISBN: "
-        ISBNV = gest.chomp
+    puts "Ingrese numero de ISBN del libro : "
+        ISBNV = gets.chomp
+        v=1
     if opcion = 1
         if ISBNV == 
         if v < 3
@@ -583,10 +584,7 @@ elsif opcion=='2'
         end
         if v == 3
 
-        end
-        if  
-            
-        end    
+        end   
     elsif opcion=='2'
         # registro de autores
     elsif opcion=='3'
@@ -595,5 +593,7 @@ elsif opcion=='2'
     end
    end
 end
-#elsif opcion=='3'
- #   puts "Gracias por utilizar el programa"
+if opcion=='3'
+puts "Gracias por utilizar el programa"
+end 
+end 
