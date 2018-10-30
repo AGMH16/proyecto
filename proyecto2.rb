@@ -573,8 +573,20 @@ elsif opcion=='2'
     puts "3. Listado de ventas"
     puts "4. Regresar"
     opcion=gets.chomp
-    if opcion=='1'
-        #registro de nuevo libro
+    puts "Ingrese numero de ISBN: "
+        ISBNV = gest.chomp
+    if opcion = 1
+        if ISBNV == 
+        if v < 3
+            
+          v = v + 1
+        end
+        if v == 3
+
+        end
+        if  
+            
+        end    
     elsif opcion=='2'
         # registro de autores
     elsif opcion=='3'
